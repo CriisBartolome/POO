@@ -45,10 +45,10 @@ public class Triangulo20 {
                 }
             }
         }
-        /*System.out.println(combinaciones4Elementos.size());
+        System.out.println(combinaciones4Elementos.size());
         for(Set<Integer> set: combinaciones4Elementos) {
             System.out.println(set);
-        }*/
+        }
         return combinaciones4Elementos;
     }
     
