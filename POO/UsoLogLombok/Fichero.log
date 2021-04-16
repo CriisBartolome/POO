@@ -1,2 +1,5 @@
-2021-04-09 11:16:07.265 ERROR 16704 --- [main] c.s.U.UsoLogLombokApplication            : Error en el logging
-2021-04-09 11:16:07.268  WARN 16704 --- [main] c.s.U.UsoLogLombokApplication            : Cuidado
+2021-04-16 09:41:41.032   INFO 17388 --- [main] c.s.UsoLogLombok.MainPruebaMDC           : Starting MainPruebaMDC using Java 15.0.2 on ITEM-S79780 with PID 17388 (C:\Users\cbartolome\Documents\Formación Proyecto\POO\UsoLogLombok\target\classes started by cbartolome in C:\Users\cbartolome\Documents\Formación Proyecto\POO\UsoLogLombok)
+2021-04-16 09:41:41.036   INFO 17388 --- [main] c.s.UsoLogLombok.MainPruebaMDC           : No active profile set, falling back to default profiles: default
+2021-04-16 09:41:41.756   INFO 17388 --- [main] c.s.UsoLogLombok.MainPruebaMDC           : Started MainPruebaMDC in 1.46 seconds (JVM running for 2.292)
+2021-04-16 09:41:41.764 Usando MDC de log INFO 17388 --- [main] com.soprasteria.UsoLogLombok.UsoMDCLog   : Hola mundo
+2021-04-16 09:41:41.765 Usando MDC de log INFO 17388 --- [main] com.soprasteria.UsoLogLombok.UsoMDCLog   : Hola mundo Usando MDC de log
