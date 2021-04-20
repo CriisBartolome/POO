@@ -20,6 +20,9 @@ public class Main {
         //LLamada a getTalla() -> se añade a Stack
         camiseta.getTalla();
         //Se desapila la llamada al método
+        
+        //Creo una nueva referencia que apunta al mismo objeto camiseta. Se guarda en Stack
+        Camiseta camiseta2 = camiseta;
 
     }
 
