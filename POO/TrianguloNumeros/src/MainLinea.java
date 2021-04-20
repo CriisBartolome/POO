@@ -5,7 +5,7 @@ public class MainLinea {
 
     public static void main(String[] args) {
         Linea linea1 = new Linea();
-        linea1.obtenerValores(0, new Linea(), 1);
+        linea1.obtenerValores(0, new Linea(), 6);
         System.out.println(linea1.getNumeros());
         
         Linea linea2 = new Linea();

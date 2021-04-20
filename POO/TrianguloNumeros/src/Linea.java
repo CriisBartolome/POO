@@ -55,14 +55,17 @@ public class Linea {
     
     public void siguienteLinea(Linea linea1, Linea linea2) {
         int contador = 0;
+        //for(;(contador < linea1.getNumeros().size()) && (numeros.size() != 4); contador++) {
+         
         while ((contador < linea1.getNumeros().size()) && (numeros.size() != 4)) {
-            if(numeros.size() != 0) {
+            //if(numeros.size() != 0)
+            if(!numeros.isEmpty()) {
                 numeros.remove(0);
             }
-            if(linea2.getNumeros().size() != 0) {
+            if(!linea2.getNumeros().isEmpty()) {
                 if(!linea2.getNumeros().contains(linea1.getNumeros().get(contador))){
                     while(comparar(linea2) != 1) {
-                        if(numeros.size() != 0) {
+                        if(!numeros.isEmpty()) {
                             numeros.clear();
                         }
                         numeros.add(linea1.getNumeros().get(contador));
