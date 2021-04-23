@@ -10,18 +10,20 @@ public class HilosSincronizados extends Thread{
 
     public void run() {
         
-        sumar1();
+        //sumar1();
         //sumar2();
+        sumar3();
         
     }
 
     private static synchronized void sumar1(){
         for (int sumador = 1; sumador <= 10; sumador++) {
             suma++;
-            System.out.println(Thread.currentThread().getName() + " suma: " + suma);           
+            System.out.println(Thread.currentThread().getName() + " suma: " + suma);
         }
         
     }
+    
     
     private void sumar2() {
         synchronized (getClass()) {
@@ -38,6 +40,17 @@ public class HilosSincronizados extends Thread{
                 getClass().notifyAll();
             }            
         }
+    }
+    
+    private void sumar3(){
+        for (int sumador = 1; sumador <= 10; sumador++) {
+            sumar();
+        }
+        
+    }
+    private static synchronized void sumar() {
+        suma++;
+        System.out.println(Thread.currentThread().getName() + " suma: " + suma); 
     }
     
 }
