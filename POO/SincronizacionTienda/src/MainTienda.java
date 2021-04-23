@@ -11,8 +11,17 @@ public class MainTienda {
         Thread cajera1 = new Cajera("Cajera 1", cliente1, initialTime);
         Thread cajera2 = new Cajera("Cajera 2", cliente2, initialTime);
 
+        System.out.println("Inicio de las compras");
+        System.out.println("----------------------------------------------------------------");
+        
         cajera1.start();
         cajera2.start();
+        
+        while(cajera1.isAlive() || cajera2.isAlive()) {
+            
+        }
+        
+        System.out.println("Compras procesadas");
     }
         
         
