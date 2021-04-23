@@ -10,6 +10,7 @@ public class HilosIndependientesUsandoThread extends Thread{
             System.out.println(getName() + " -> Iteración nº " + contador);
         }
         System.out.println("Termina el thread " + getName());
+        System.out.println("------------------------");
     }
     
 }
