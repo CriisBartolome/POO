@@ -22,6 +22,9 @@ public class MainTienda {
         
         long init = System.currentTimeMillis();  // Instante inicial del procesamiento
         
+        System.out.println("Inicio de las compras");
+        System.out.println("----------------------------------------------------------------");
+                
         ExecutorService executor = Executors.newFixedThreadPool(numCajeras);
         for (Cliente cliente: clientes) {
             Runnable cajera = new Cajera(cliente, init);
