@@ -1,4 +1,4 @@
-
+//ConcreteProduct
 public class Cajera extends Thread implements Empleo{
 
     private String nombre;

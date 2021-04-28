@@ -1,4 +1,4 @@
-
+//Factory
 public interface Factory {
 
     //factoryMethod(): Product
