@@ -12,6 +12,9 @@ import org.junit.rules.Timeout;
 public class EjemplosRuleTest {
     
     @Rule
+    public RulePersonalizada rulePersonalizada = new RulePersonalizada();
+    
+    @Rule
     public TestName name = new TestName();
     
     @Test
@@ -32,7 +35,7 @@ public class EjemplosRuleTest {
     }    
     
     @Rule
-    public Timeout timeout = new Timeout(2, TimeUnit.SECONDS);
+    public Timeout timeout = new Timeout(3, TimeUnit.SECONDS);
  
     @Test
     public void testA() throws Exception {
