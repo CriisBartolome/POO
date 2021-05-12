@@ -1,6 +1,7 @@
 package FormaPatronTemplateMethodJava8;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -21,7 +22,13 @@ public abstract class AbstractClass {
         Supplier<LocalDateTime> hora = () -> LocalDateTime.now();
         Consumer<String> escribir = System.out::println;
         
-        if (condicion.test(valor1) && condicion.test(valor2)) {
+        if (Optional.of(valor1)
+                    .filter(condicion)
+                    .isPresent() 
+            && 
+            Optional.of(valor1)
+                    .filter(condicion)
+                    .isPresent()) {
             escribir.accept("El resultado es " + operacion.apply(valor1, valor2) );
             escribir.accept("Hora actual: " + hora.get().getHour() + ":" + hora.get().getMinute() + ":" + hora.get().getSecond());
         }
