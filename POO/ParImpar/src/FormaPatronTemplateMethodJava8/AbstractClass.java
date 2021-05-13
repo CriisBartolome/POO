@@ -22,7 +22,17 @@ public abstract class AbstractClass {
         Supplier<LocalDateTime> hora = () -> LocalDateTime.now();
         Consumer<String> escribir = System.out::println;
         
-        if (Optional.of(valor1)
+        String resultado = Optional.of(valor1)
+                .filter(condicion)
+                .map(valor -> valor2)
+                .filter(condicion)
+                .map(valor -> "El resultado es " + operacion.apply(valor1, valor2)
+                              + "\nHora actual: " + hora.get().getHour() + ":" 
+                              + hora.get().getMinute() + ":" + hora.get().getSecond())
+                .orElse("No se ha podido realizar la operación");
+        escribir.accept(resultado);
+        
+        /*if (Optional.of(valor1)
                     .filter(condicion)
                     .isPresent() 
             && 
@@ -34,7 +44,7 @@ public abstract class AbstractClass {
         }
         else {
             escribir.accept("No se ha podido realizar la operación");
-        }        
+        }  */      
     }
     
     public abstract Predicate<Integer> condicion();
