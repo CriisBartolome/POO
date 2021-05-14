@@ -1,0 +1,20 @@
+{
+	"atributo1": "valor1",
+	"atributo2": 2,
+	"atributo3": "valor2",
+	"atributo4": 4,
+	"atributo5": [
+		{
+			"nombre": "Maria",
+			"apellido": "Lopez",
+			"edad": 28,
+			"numExpediente": 123456
+		},
+		{
+			"nombre": "Carlos",
+			"apellido": "Jimenez",
+			"edad": 19,
+			"numExpediente": 987654
+		}
+	]
+}
