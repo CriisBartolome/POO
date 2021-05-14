@@ -1,5 +1,6 @@
 package com.example.SerializarJSON;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
@@ -7,15 +8,21 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+import javax.json.JsonObject;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.joshka.junit.json.params.JsonFileSource;
 
 class ClaseArrayTest {
     
     Alumno [] arrayAlumnos = new Alumno[2];
+    ClaseArray claseArray;
     
     @BeforeEach
     void init(){
@@ -31,7 +38,7 @@ class ClaseArrayTest {
     //En este test estamos creando un objeto de la clase Clase
     //Después lo serializamos pasandolo a formato JSON
     public void serializarObjetoJSON() throws Exception{
-        ClaseArray claseArray = new ClaseArray("valor1", 2, "valor2", 4, arrayAlumnos);
+        claseArray = new ClaseArray("valor1", 2, "valor2", 4, arrayAlumnos);
         ObjectMapper oM = new ObjectMapper();
         File archivo = new File("src/main/resources/DatosArray.json");
         archivo.createNewFile();
@@ -47,8 +54,29 @@ class ClaseArrayTest {
         ObjectMapper oM = new ObjectMapper();
         String valor = Files.readString(Paths.get("src/main/resources/DatosArray.json"));
         System.out.println(valor);
-        ClaseArray claseLeida = oM.readValue(valor, ClaseArray.class);
-        System.out.println(claseLeida);
+        claseArray = oM.readValue(valor, ClaseArray.class);
+        System.out.println(claseArray);
+    }
+    
+    @ParameterizedTest
+    @JsonFileSource(resources = "/DatosArray.json")
+    public void convertirAObjeto(JsonObject jsonObject) throws Exception{
+        System.out.println(jsonObject.toString());
+        System.out.println(jsonObject.getJsonArray("atributo5"));
+        assertThat(jsonObject.getString("atributo1")).isEqualTo("valor1");
+        
+        ObjectMapper oM = new ObjectMapper();
+        claseArray = oM.readValue(jsonObject.toString(), ClaseArray.class);
+        System.out.println(claseArray);
+        
+        //assertThat(claseArray.getAtributo5().length).isEqualTo(arrayAlumnos.length);
+        //assertThat(claseLeida.getAtributo5()).hasSameSizeAs(arrayAlumnos);
+        assertThat(claseArray.getAtributo5()).usingFieldByFieldElementComparator()
+                                             //.usingRecursiveFieldByFieldElementComparator()
+                                             //.isEqualTo(arrayAlumnos)
+                                             //.containsExactly(arrayAlumnos)
+                                             .containsSequence(arrayAlumnos)
+                                             .hasSameSizeAs(arrayAlumnos);     
     }
 
 }
