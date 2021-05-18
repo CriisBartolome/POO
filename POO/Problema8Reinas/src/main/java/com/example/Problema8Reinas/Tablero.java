@@ -21,7 +21,8 @@ public class Tablero {
     public boolean colocar(int fila, int columna) {
         if (contadorReinas == TAMANO) {
             return true;
-        } else {
+        }
+        else {
             for (int posicion = columna; posicion < TAMANO; posicion++) {
                 if (esValida(fila, posicion)) {
                     solucion[fila] = posicion;
@@ -42,7 +43,6 @@ public class Tablero {
 
     }
 
-    // PROBLEMA AQUÍ
     private boolean esValida(int fila, int columna) {
         for (int posicion = 0; posicion < contadorReinas; posicion++) {
             if ((posicion == fila) || (solucion[posicion] == columna)
