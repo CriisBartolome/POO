@@ -7,6 +7,9 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.json.JsonObject;
 
@@ -58,6 +61,9 @@ class ClaseArrayTest {
         System.out.println(claseArray);
     }
     
+    //En este test, tomamos el archivo json especificado en @JsonFileResource
+    //Lo que queremos hacer es construir el objeto a partir del JSON
+    //y ver cómo se comparan los arrays
     @ParameterizedTest
     @JsonFileSource(resources = "/DatosArray.json")
     public void convertirAObjeto(JsonObject jsonObject) throws Exception{
@@ -77,6 +83,37 @@ class ClaseArrayTest {
                                              //.containsExactly(arrayAlumnos)
                                              .containsSequence(arrayAlumnos)
                                              .hasSameSizeAs(arrayAlumnos);     
+    }
+    
+    //En este test, tomamos los archivo json especificados en @JsonFileResource
+    //Se indican entre corchetes {} y separados por comas
+    //Lo que queremos hacer es construir el objeto a partir del JSON
+    //y ver cómo se comparan los arrays
+    @ParameterizedTest
+    @JsonFileSource(resources = {"/DatosArray.json", "/DatosArray2.json"})
+    public void convertirAObjetoVariosArchivos(JsonObject jsonObject) throws Exception{
+        ObjectMapper oM = new ObjectMapper();
+        claseArray = oM.readValue(jsonObject.toString(), ClaseArray.class);
+        System.out.println(claseArray);
+        
+        assertThat(claseArray.getAtributo5()).usingFieldByFieldElementComparator()
+                                             .containsSequence(arrayAlumnos)
+                                             .hasSameSizeAs(arrayAlumnos);     
+    }
+    
+    //Ejemplo de comparación de arrays/listas
+    //Al ser enteros, no necesito el comparador
+    @Test
+    public void compararLista() {
+        List<Integer> listaEnteros1 = Arrays.asList(1,3,5);
+        List<Integer> listaEnteros2 = Arrays.asList(1,3,5,7);
+        
+        assertThat(listaEnteros2)//.usingFieldByFieldElementComparator()
+                                 //.usingRecursiveFieldByFieldElementComparator()
+                                 //.isEqualTo(arrayAlumnos)
+                                 //.containsExactly(1,3)
+                                 .containsSequence(listaEnteros1);
+                                 //.hasSameSizeAs(listaEnteros2); 
     }
 
 }
