@@ -1,4 +1,4 @@
-
+//Clase Proxy que implementa la interfaz y nos ayuda a tratar el sujeto
 public class InformacionProxy implements Informacion{
 
     private static final String ADMIN = "Administrador";

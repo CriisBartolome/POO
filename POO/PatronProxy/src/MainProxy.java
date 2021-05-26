@@ -1,4 +1,4 @@
-
+//Se puede ver como el Cliente
 public class MainProxy {
 
     public static void main(String[] args) {

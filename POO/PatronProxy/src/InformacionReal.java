@@ -1,4 +1,4 @@
-
+//Clase Sujeto Real que implementa la interfaz
 public class InformacionReal implements Informacion{
 
     @Override
