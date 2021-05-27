@@ -8,8 +8,7 @@ import org.slf4j.LoggerFactory;
 
 public class ControladorProxyDinamico implements InvocationHandler {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(
-            ControladorProxyDinamico.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(ControladorProxyDinamico.class);
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
