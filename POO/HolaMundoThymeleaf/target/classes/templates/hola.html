@@ -1,9 +1,86 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hola Mundo Thymeleaf</title>
+<title>Hola Mundo Thymeleaf</title>
+<meta charset="UTF-8">
+<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<ul class="menu">
+		<a href="/">Página Principal</a>
+		<a href="/">Información</a>
+		<a href="/">Link</a>
+		<a href="/">Imagen</a>
+	</ul>
 	<h1>Hola Mundo</h1>
+	<h3>Información</h3>
+	<table border="2">
+		<thead>
+			<th>Nombre</th>
+			<th>Dirección</th>
+			<th>Teléfono</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Lucía</td>
+				<td>Calle Bailén Nº34, 4B</td>
+				<td>918374648</td>
+			</tr>
+			<tr>
+				<td>Marcos</td>
+				<td>Calle Mayor Nº18, 6A</td>
+				<td>618374648</td>
+			</tr>
+			<tr>
+				<td>Álvaro</td>
+				<td>Calle Fuencarral SN, Bajo C</td>
+				<td>612345678</td>
+			</tr>
+			<tr>
+				<td>Elena</td>
+				<td>Plaza de España Nº2, 14C</td>
+				<td>912345678</td>
+			</tr>
+			<tr>
+				<td>Alberto</td>
+				<td>Calle Paraiso Nº103, 1B</td>
+				<td>609876543</td>
+			</tr>
+			<tr>
+				<td>Alejandra</td>
+				<td>Plaza del Encuentro Nº76, 5D</td>
+				<td>609876543</td>
+			</tr>
+			<tr>
+				<td>Marina</td>
+				<td>Calle del Camino Nº25, 8B</td>
+				<td>674856392</td>
+			</tr>
+			<tr>
+				<td>Carlos</td>
+				<td>Paseo del Prado Nº32, Atico</td>
+				<td>610987654</td>
+			</tr>
+			<tr>
+				<td>Carolina</td>
+				<td>Calle Cuatro Caminos Nº67, 6C</td>
+				<td>642876543</td>
+			</tr>
+		</tbody>
+	</table>
+	<input type="button" value="Actualizar" onclick="window.alert('Página Actualizada')">	
+	<h3>Link</h3>
+	<a href="https://github.com/">GitHub</a>
+	<h3>Imagen</h3>
+	<img src="imagen.jpg" alt="Atardecer" style="height: 30%; width: 50%;">
+	<h3>Paginación</h3>
+	<ul class="paginacion">
+		<a href="/">«</a>
+		<a href="/">1</a>
+		<a class="active" href="/">2</a>
+		<a href="/">3</a>
+		<a href="/">4</a>
+		<a href="/">»</a>
+	</ul>
 </body>
 </html>
