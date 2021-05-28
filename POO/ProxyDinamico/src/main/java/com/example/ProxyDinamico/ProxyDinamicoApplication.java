@@ -27,7 +27,7 @@ public class ProxyDinamicoApplication {
         // Solo sirve en este caso para métodos que devuelvan un integer
         // System.out.println("return: " + proxyInstance.containsKey("hola"));
 
-        // Creando una clase anónima porque InvocationHandler es una interfaz
+        // Usando expresiones lambda porque InvocationHandler es una interfaz
         // funcional
         Map proxyInstance2 = (Map) Proxy.newProxyInstance(
                 ControladorProxyDinamico.class.getClassLoader(),
