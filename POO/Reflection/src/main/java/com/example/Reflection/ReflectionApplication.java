@@ -13,7 +13,7 @@ public class ReflectionApplication {
 
         try {
             // Obtengo el constructor vacío de la clase
-            Constructor<?> constructor1 = Suma.class.getConstructor();
+            /*Constructor<?> constructor1 = Suma.class.getConstructor();
 
             // Muestro el nombre y los parámetros que requiere
             escribir.accept("Constructor: " + constructor1.getName());
@@ -64,7 +64,7 @@ public class ReflectionApplication {
 
             // Obtengo el método que me interesa de la clase (el que no tiene
             // parámetros)
-            Method metodo3 = constructor1.getDeclaringClass().getMethod("sumar");
+            Method metodo3 = constructor2.getDeclaringClass().getMethod("sumar");
 
             // Escribo su nombre y lo invoco
             escribir.accept("Metodo: " + metodo3.toString());
@@ -72,14 +72,75 @@ public class ReflectionApplication {
 
             // Obtengo el método que me interesa de la clase (el que tiene que
             // recibir parámetros)
-            Method metodo4 = constructor1.getDeclaringClass().getMethod("sumar", int.class, int.class);
+            Method metodo4 = constructor2.getDeclaringClass().getMethod("sumar", int.class, int.class);
 
             // Escribo su nombre y lo invoco
             escribir.accept("Metodo: " + metodo4.toString());
             escribir.accept(" = " + metodo4.invoke(suma2, 4, 6));
 
+            escribir.accept("--------------------------------");*/
+
+            // Si quiero hacerlo totalmente de forma anónima
+            // Obtengo la clase
+            Class clase = Class.forName("com.example.Reflection.Suma");
+
+            // Obtengo el constructor vacío de la clase
+            Constructor<?> constructor3 = clase.getConstructor();
+
+            // Muestro el nombre y los parámetros que requiere
+            escribir.accept("Constructor: " + constructor3.getName());
+            escribir.accept("Parametros necesarios para el constructor: " + constructor3.getParameterCount());
+
+            // Creo una instancia de la clase a traves del constructor
+            Object suma3 = constructor3.newInstance();
+
+            // Obtengo el método que me interesa de la clase (el que no tiene
+            // parámetros)
+            Method metodo5 = constructor3.getDeclaringClass().getMethod("sumar");
+
+            // Escribo su nombre y lo invoco
+            escribir.accept("Metodo: " + metodo5.toString());
+            escribir.accept(" = " + metodo5.invoke(suma3));
+
+            // Obtengo el método que me interesa de la clase (el que tiene que
+            // recibir parámetros)
+            Method metodo6 = constructor3.getDeclaringClass().getMethod("sumar", int.class, int.class);
+
+            // Escribo su nombre y lo invoco
+            escribir.accept("Metodo: " + metodo6.toString());
+            escribir.accept(" = " + metodo6.invoke(suma3, 4, 6));
+
+            escribir.accept("--------------------------------");
+
+            // Obtengo el constructor de la clase que recibe parámetros
+            Constructor<?> constructor4 = clase.getConstructor(int.class, int.class);
+
+            // Muestro el nombre y los parámetros que requiere
+            escribir.accept("Constructor: " + constructor4.getName());
+            escribir.accept("Parametros necesarios para el constructor: " + constructor4.getParameterCount());
+
+            // Creo una instancia de la clase a traves del constructor
+            Object suma4 = constructor4.newInstance(2, 4);
+
+            // Obtengo el método que me interesa de la clase (el que no tiene
+            // parámetros)
+            Method metodo7 = constructor4.getDeclaringClass().getMethod("sumar");
+
+            // Escribo su nombre y lo invoco
+            escribir.accept("Metodo: " + metodo7.toString());
+            escribir.accept(" = " + metodo7.invoke(suma4));
+
+            // Obtengo el método que me interesa de la clase (el que tiene que
+            // recibir parámetros)
+            Method metodo8 = constructor4.getDeclaringClass().getMethod("sumar", int.class, int.class);
+
+            // Escribo su nombre y lo invoco
+            escribir.accept("Metodo: " + metodo8.toString());
+            escribir.accept(" = " + metodo8.invoke(suma4, 4, 6));
+
         } catch (NoSuchMethodException | SecurityException | InstantiationException
-                | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+                | IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
