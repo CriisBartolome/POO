@@ -41,7 +41,7 @@ public class ReflectionReutilizacionCodigoApplication {
 
             escribir.accept("--------------------------------");
 
-            // Obtengo el constructor vacío de la clase
+            // Obtengo el constructor de la clase que recibe parámeteros
             Constructor<?> constructor2 = obtenerConstructor(clase, clasesParametros);
 
             // Muestro el nombre y los parámetros que requiere
@@ -80,9 +80,8 @@ public class ReflectionReutilizacionCodigoApplication {
             throws NoSuchMethodException, SecurityException {
         if (clasesParametros == null) {
             return clase.getConstructor();
-        } else {
-            return clase.getConstructor(clasesParametros[0], clasesParametros[1]);
         }
+        return clase.getConstructor(clasesParametros[0], clasesParametros[1]);
     }
 
     private static void mostrarInfoConstructor(Constructor<?> constructor1) {
@@ -94,9 +93,8 @@ public class ReflectionReutilizacionCodigoApplication {
             throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         if (parametros == null) {
             return constructor1.newInstance();
-        } else {
-            return constructor1.newInstance(parametros[0], parametros[1]);
         }
+        return constructor1.newInstance(parametros[0], parametros[1]);
     }
 
     private static Method obtenerMetodo(Constructor<?> constructor1, String string, Class<?>[] clasesParametros)
