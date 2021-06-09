@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 @SpringBootApplication
 public class ConexionConH2ProductosApplication {
@@ -34,8 +37,19 @@ public class ConexionConH2ProductosApplication {
             productosRepository.save(producto5);
             productosRepository.save(producto6);
 
+            // Creo un elemento para hacer la paginación
+            // Indico la página y el número de elementos que quiero ver en cada
+            // página
+            Pageable pageable = PageRequest.of(0, 2);
+
             // Los listo todos
-            productosRepository.findAll().forEach(System.out::println);
+            productosRepository.findAll(pageable).forEach(System.out::println);
+
+            pageable = PageRequest.of(1, 2);
+            productosRepository.findAll(pageable).forEach(System.out::println);
+
+            pageable = PageRequest.of(2, 2);
+            productosRepository.findAll(pageable).forEach(System.out::println);
 
             // Creo un producto que va a ser el ejemplo de los productos que
             // quiero obtener
