@@ -1,6 +1,5 @@
 package com.example.conexionConH2Productos;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,7 +21,8 @@ public class ConexionConH2ProductosApplication {
             Producto producto2 = new Producto("Camiseta", 2, 10.0, "Deporte");
             Producto producto3 = new Producto("Perfume", 3, 35.50, "Perfumes");
             Producto producto4 = new Producto("Lechuga", 4, 0.85, "Verdura");
-            Producto producto5 = new Producto("Helados", 5, 2.95, "Congelados");
+            Producto producto5 = new Producto("Helado", 5, 2.95, "Congelados");
+            Producto producto6 = new Producto("Patata", 6, 0.72, "Verdura");
 
             // Guardo los productos
             productosRepository.save(producto1);
@@ -32,6 +32,7 @@ public class ConexionConH2ProductosApplication {
             productosRepository.save(producto3);
             productosRepository.save(producto4);
             productosRepository.save(producto5);
+            productosRepository.save(producto6);
 
             // Los listo todos
             productosRepository.findAll().forEach(System.out::println);
@@ -61,6 +62,7 @@ public class ConexionConH2ProductosApplication {
                     ExampleMatcher.GenericPropertyMatchers.contains());
 
             // En este caso, escribo los objetos que contengan la letra l
+            // minúscula
             productosRepository.findAll(Example.of(ejemplo, ejemploMacher)).forEach(System.out::println);
 
             // Borro todos los elementos que contengan la l
@@ -68,6 +70,27 @@ public class ConexionConH2ProductosApplication {
 
             // Los listo todos
             productosRepository.findAll().forEach(System.out::println);
+
+            // Utilizo el query method creado para buscar por categoria y los
+            // escribo
+            productosRepository.findByCategoria("Verdura").forEach(System.out::println);
+
+            // Utilizo el query method creado para buscar productos que cuesten
+            // más que una cantidad dada y los escribo
+            productosRepository.findByPrecioGreaterThanEqual(10.0).forEach(System.out::println);
+
+            // Utilizo el query method creado para buscar productos cuyo nombre
+            // empiece por el string indicado y los escribo
+            productosRepository.findByNombreStartingWith("P").forEach(System.out::println);
+
+            // Utilizo el query method creado para buscar productos cuyo nombre
+            // contenga la cadena indicada y los escribo
+            productosRepository.findByNombreContaining("t").forEach(System.out::println);
+
+            // Utilizo el query method creado para buscar productos cuya
+            // categoria sea la indicada y las ordeno según su precio
+            // ascendente. Después los escribo
+            productosRepository.findByCategoriaOrderByPrecioAsc("Verdura").forEach(System.out::println);
         };
     }
 

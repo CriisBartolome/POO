@@ -19,5 +19,5 @@ public class Producto {
     @Id
     private Integer id;
     private Double precio;
-    private String categoría;
+    private String categoria;
 }
