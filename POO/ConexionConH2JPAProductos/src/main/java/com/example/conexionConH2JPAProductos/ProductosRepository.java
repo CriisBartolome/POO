@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface ProductosRepository extends JpaRepository<Producto, Integer> {
     // Expresión SpEL usando Query
@@ -15,7 +16,13 @@ public interface ProductosRepository extends JpaRepository<Producto, Integer> {
 
     @Query("select p from #{#entityName} p where p.precio>=?1")
     List<Producto> findByPrecioGreaterThanEqual(Double precio);
+    
+    @Query("select p from #{#entityName} p where p.categoria = ?1 and p.precio>= ?2")
+    List<Producto> findByCategoriaAndPrecioGreaterThanEqual(String categoria, Double precio);
 
+    //@Query("select p from #{#entityName} p where p.categoria = #{#producto.categoria} and p.precio>= #{#producto.precio}")
+    //List<Producto> findByCategoriaAndPrecioGreaterThanEqual(@Param("producto") Producto producto);
+    
     @Query("select p from #{#entityName} p where p.nombre like ?1%")
     List<Producto> findByNombreStartingWith(String inicio);
 

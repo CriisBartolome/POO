@@ -104,6 +104,9 @@ public class ConexionConH2JPAProductosApplication {
             // categoria sea la indicada y las ordeno según su precio
             // ascendente. Después los escribo
             productosRepository.findByCategoriaOrderByPrecioAsc("Verdura").forEach(System.out::println);
+            
+            //Utilizo el query method compuesto (recibe 2 parametros)
+            productosRepository.findByCategoriaAndPrecioGreaterThanEqual("Verdura", 0.75).forEach(System.out::println);
         };
     }
 
