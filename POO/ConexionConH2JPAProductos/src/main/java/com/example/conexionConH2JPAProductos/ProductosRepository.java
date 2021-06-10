@@ -20,8 +20,9 @@ public interface ProductosRepository extends JpaRepository<Producto, Integer> {
     @Query("select p from #{#entityName} p where p.categoria = ?1 and p.precio>= ?2")
     List<Producto> findByCategoriaAndPrecioGreaterThanEqual(String categoria, Double precio);
 
-    //@Query("select p from #{#entityName} p where p.categoria = #{#producto.categoria} and p.precio>= #{#producto.precio}")
-    //List<Producto> findByCategoriaAndPrecioGreaterThanEqual(@Param("producto") Producto producto);
+    //Si ponía #{#entityName} en vez de Producto, daba error
+    @Query("select p from Producto p where p.categoria = :#{#producto.categoria} and p.precio>= :#{#producto.precio}")
+    List<Producto> findByCategoriaAndPrecioGreaterThanEqual(Producto producto);
     
     @Query("select p from #{#entityName} p where p.nombre like ?1%")
     List<Producto> findByNombreStartingWith(String inicio);
