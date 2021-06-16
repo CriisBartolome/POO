@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class Mensaje {
 
     private int numEjecuciones;
+    private int numEjecucionesMetodo;
 
     public void escribirMensajeHola() {
         numEjecuciones++;
@@ -20,12 +21,19 @@ public class Mensaje {
 
     protected void metodo() {
         numEjecuciones++;
+        numEjecucionesMetodo++;
         System.out.println("Metodo protected");
     }
 
     public Integer getNumEjecuciones() {
         numEjecuciones++;
         return numEjecuciones;
+    }
+    
+    @MiAnotacionAspectos
+    public Integer getNumEjecucionesMetodo() {
+        numEjecuciones++;
+        return numEjecucionesMetodo;
     }
 
 }

@@ -12,20 +12,29 @@ import org.springframework.stereotype.Component;
 @Component
 public class MensajeAspectos {
     
-    @Before(value= "execution(* com.example.SpringAOP.Mensaje.*(..))")
+    @Before(value = "execution(* com.example.SpringAOP.Mensaje.*(..))")
     public void ejecutarAntes(JoinPoint joinPoint) {
         System.out.println("Antes del método " + joinPoint.getSignature().getName());
         System.out.println("Leyendo mensaje...");
     }
 
-    @After(value= "execution(* com.example.SpringAOP.Mensaje.escribirMensajeHola())")
+    @After(value = "execution(* com.example.SpringAOP.Mensaje.escribirMensajeHola())")
     public void ejecutarDespues(JoinPoint joinPoint) {
         System.out.println("Después del método " + joinPoint.getSignature().getName());
         System.out.println("Mensaje leido...");
     }
-    @Around(value= "execution(* com.example.SpringAOP.Mensaje.getNumEjecuciones())")
+    
+    @Around(value = "execution(* com.example.SpringAOP.Mensaje.getNumEjecuciones())")
     public int ejecutarAlRededor(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         System.out.println("Obteniendo el número de ejecuciones...");
+        int totalEjecuciones = (int) proceedingJoinPoint.proceed();
+        System.out.println("Total: " + totalEjecuciones);
+        return totalEjecuciones;
+    }
+    
+    @Around(value = "@annotation(MiAnotacionAspectos)")
+    public int ejecutarAlRededorConAnotacion(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        System.out.println("Obteniendo el número de ejecuciones de método()...");
         int totalEjecuciones = (int) proceedingJoinPoint.proceed();
         System.out.println("Total: " + totalEjecuciones);
         return totalEjecuciones;
