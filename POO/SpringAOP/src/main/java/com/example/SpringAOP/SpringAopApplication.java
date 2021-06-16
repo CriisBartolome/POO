@@ -21,6 +21,7 @@ public class SpringAopApplication {
         mensaje.metodo();
         mensaje.escribirMensajeHola();
         mensaje.escribirMensajeMundo();
+        System.out.println(mensaje.getNumEjecuciones());
     }
 
 }

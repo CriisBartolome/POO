@@ -1,7 +1,9 @@
 package com.example.SpringAOP;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -11,14 +13,21 @@ import org.springframework.stereotype.Component;
 public class MensajeAspectos {
     
     @Before(value= "execution(* com.example.SpringAOP.Mensaje.*(..))")
-    public void beforeAdvice(JoinPoint joinPoint) {
+    public void ejecutarAntes(JoinPoint joinPoint) {
         System.out.println("Antes del método " + joinPoint.getSignature().getName());
         System.out.println("Leyendo mensaje...");
     }
 
     @After(value= "execution(* com.example.SpringAOP.Mensaje.escribirMensajeHola())")
-    public void afterAdvice(JoinPoint joinPoint) {
+    public void ejecutarDespues(JoinPoint joinPoint) {
         System.out.println("Después del método " + joinPoint.getSignature().getName());
         System.out.println("Mensaje leido...");
+    }
+    @Around(value= "execution(* com.example.SpringAOP.Mensaje.getNumEjecuciones())")
+    public int ejecutarAlRededor(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        System.out.println("Obteniendo el número de ejecuciones...");
+        int totalEjecuciones = (int) proceedingJoinPoint.proceed();
+        System.out.println("Total: " + totalEjecuciones);
+        return totalEjecuciones;
     }
 }
