@@ -17,11 +17,14 @@ import lombok.NoArgsConstructor;
 public class Producto {
 
     // Los nombres de los productos tienen que comenzar por la letra C mayúscula
-    @Pattern(regexp = "C.*", message = "El nombre tiene que empezar por C mayúscula")
+    // Funciona sin poner ^ pero es más fácil de leer si se pone
+    @Pattern(regexp = "^C.*", message = "El nombre tiene que empezar por C mayúscula")
     private String nombre;
     @Id
-    // Solo puede recibir enteros, tanto positivos como negativos
-    //@Pattern(regexp = "-?[0-9]*", message = "El id solo puede ser un número entero")
+    // Si el tipo es String, indicar que solo puede recibir enteros, tanto
+    // positivos como negativos
+    // @Pattern(regexp = "-?[0-9]*", message = "El id solo puede ser un número
+    // entero")
     private Integer id;
     private Double precio;
     private String categoria;
