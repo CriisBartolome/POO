@@ -15,12 +15,20 @@ public class ProductosController {
     @Autowired
     ProductosRepository productosRepository;
 
-    @GetMapping
+    // Si quiero que me devuelva un tipo concreto, tengo que añadir en el pom la
+    // dependecia de ese tipo y además indicarlo en el GetMapping
+    // En este caso, quiero que me lo devuelva en formato XML
+    // Por defecto, recibe y devuelve JSON
+    @GetMapping(produces = "application/xml")
     public @ResponseBody List<Producto> getProductos() {
         return productosRepository.findAll();
     }
 
-    @PostMapping
+    // Primero indico el tipo del objeto que recibe, que en este caso es JSON
+    // Si quiero que me devuelva un tipo concreto, tengo que añadir en el pom la
+    // dependecia de ese tipo y además indicarlo en el GetMapping
+    // En este caso, quiero que me lo devuelva en formato XML
+    @PostMapping(consumes = "application/json", produces = "application/xml")
     public @ResponseBody Producto postProductos(@RequestBody Producto producto) {
         return productosRepository.save(producto);
     }
