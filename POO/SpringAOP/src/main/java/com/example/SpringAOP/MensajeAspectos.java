@@ -6,6 +6,7 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -34,6 +35,9 @@ public class MensajeAspectos {
     
     @Around(value = "@annotation(MiAnotacionAspectos)")
     public int ejecutarAlRededorConAnotacion(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        MethodSignature method = (MethodSignature) proceedingJoinPoint.getSignature();
+        MiAnotacionAspectos anotacion = method.getMethod().getAnnotation(MiAnotacionAspectos.class);
+        System.out.println(anotacion.mensaje());
         System.out.println("Obteniendo el número de ejecuciones de método()...");
         int totalEjecuciones = (int) proceedingJoinPoint.proceed();
         System.out.println("Total: " + totalEjecuciones);

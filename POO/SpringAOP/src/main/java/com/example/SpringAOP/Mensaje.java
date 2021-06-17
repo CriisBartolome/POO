@@ -30,7 +30,7 @@ public class Mensaje {
         return numEjecuciones;
     }
     
-    @MiAnotacionAspectos
+    @MiAnotacionAspectos(mensaje = "Contando")
     public Integer getNumEjecucionesMetodo() {
         numEjecuciones++;
         return numEjecucionesMetodo;
