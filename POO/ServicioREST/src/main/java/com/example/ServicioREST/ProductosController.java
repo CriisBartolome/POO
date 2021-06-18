@@ -2,6 +2,8 @@ package com.example.ServicioREST;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +31,7 @@ public class ProductosController {
     // dependecia de ese tipo y además indicarlo en el GetMapping
     // En este caso, quiero que me lo devuelva en formato XML
     @PostMapping(consumes = "application/json", produces = "application/xml")
-    public @ResponseBody Producto postProductos(@RequestBody Producto producto) {
+    public @ResponseBody Producto postProductos(@RequestBody @Valid Producto producto) {
         return productosRepository.save(producto);
     }
 
