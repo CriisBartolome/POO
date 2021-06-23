@@ -1,0 +1,75 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Productos
+  license:
+    name: MIT
+servers:
+  - url: http://localhost:8080/
+paths:
+  /:
+    get:
+      summary: Lista de todos los productos
+      operationId: getProductos
+      tags:
+        - productos
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Producto"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Añadir un producto
+      operationId: postProductos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Producto"      
+      tags:
+        - productos
+      responses:
+        '201':
+          description: Null response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Producto:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        precio:
+          type: number
+        categoria:
+          type: string     
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
