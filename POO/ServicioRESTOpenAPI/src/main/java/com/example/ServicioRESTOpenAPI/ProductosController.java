@@ -31,14 +31,14 @@ public class ProductosController implements DefaultApi {
     }
 
     @PostMapping(value = "/", produces = { "application/json" })
-    public ResponseEntity<Void> postProductos(@Valid @RequestBody Producto producto) {
+    public ResponseEntity<Producto> postProductos(@Valid @RequestBody Producto producto) {
         com.example.ServicioRESTOpenAPI.Producto productoEntity = new com.example.ServicioRESTOpenAPI.Producto();
         productoEntity.setId(producto.getId());
         productoEntity.setNombre(producto.getNombre());
         productoEntity.setPrecio(producto.getPrecio());
         productoEntity.setCategoria(producto.getCategoria());
         productosRepository.save(productoEntity);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(producto, HttpStatus.CREATED);
     }
     
 }

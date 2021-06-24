@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-24T16:40:58.091955800+02:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-24T17:00:04.841880700+02:00[Europe/Madrid]")
 @Validated
 @Api(value = "default", description = "the default API")
 public interface DefaultApi {
@@ -61,22 +61,31 @@ public interface DefaultApi {
 
 
     /**
-     * POST / : Add new product
+     * POST / : Add a new product
      *
      * @param producto  (required)
-     * @return Null response (status code 201)
+     * @return Return the product (status code 201)
      *         or unexpected error (status code 400)
      */
-    @ApiOperation(value = "Add new product", nickname = "postProductos", notes = "", tags={ "productos", })
+    @ApiOperation(value = "Add a new product", nickname = "postProductos", notes = "", response = Producto.class, tags={ "productos", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "Null response"),
+        @ApiResponse(code = 201, message = "Return the product", response = Producto.class),
         @ApiResponse(code = 400, message = "unexpected error", response = Error.class) })
     @PostMapping(
         value = "/",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Void> postProductos(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Producto producto) {
+    default ResponseEntity<Producto> postProductos(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Producto producto) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"precio\" : 6.027456183070403, \"categoria\" : \"categoria\", \"id\" : 0, \"nombre\" : \"nombre\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
