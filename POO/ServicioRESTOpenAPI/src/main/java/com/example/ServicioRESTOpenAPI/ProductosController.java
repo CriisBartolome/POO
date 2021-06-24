@@ -1,5 +1,7 @@
 package com.example.ServicioRESTOpenAPI;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,11 @@ public class ProductosController implements DefaultApi {
     ProductosRepository productosRepository;
     
     @GetMapping(value = "/", produces = { "application/json" })
-    public ResponseEntity<Producto> getProductos() {
+    public ResponseEntity<List<Producto>> getProductos() {
         productosRepository.findAll();
+        /*Producto p = new Producto();
+        p.setId(1L);
+        return new ResponseEntity<>(p,HttpStatus.OK);*/
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

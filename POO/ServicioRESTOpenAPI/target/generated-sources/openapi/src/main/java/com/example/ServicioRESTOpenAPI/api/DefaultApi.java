@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-23T15:54:00.857221600+02:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-24T16:40:58.091955800+02:00[Europe/Madrid]")
 @Validated
 @Api(value = "default", description = "the default API")
 public interface DefaultApi {
@@ -32,20 +32,20 @@ public interface DefaultApi {
     }
 
     /**
-     * GET / : Lista de todos los productos
+     * GET / : List all products
      *
-     * @return List of products (status code 200)
-     *         or unexpected error (status code 200)
+     * @return List all products (status code 200)
+     *         or unexpected error (status code 400)
      */
-    @ApiOperation(value = "Lista de todos los productos", nickname = "getProductos", notes = "", response = Producto.class, tags={ "productos", })
+    @ApiOperation(value = "List all products", nickname = "getProductos", notes = "", response = Producto.class, responseContainer = "List", tags={ "productos", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "List of products", response = Producto.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "List all products", response = Producto.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "unexpected error", response = Error.class) })
     @GetMapping(
         value = "/",
         produces = { "application/json" }
     )
-    default ResponseEntity<Producto> getProductos() {
+    default ResponseEntity<List<Producto>> getProductos() {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
@@ -61,16 +61,16 @@ public interface DefaultApi {
 
 
     /**
-     * POST / : Añadir un producto
+     * POST / : Add new product
      *
      * @param producto  (required)
      * @return Null response (status code 201)
-     *         or unexpected error (status code 200)
+     *         or unexpected error (status code 400)
      */
-    @ApiOperation(value = "Añadir un producto", nickname = "postProductos", notes = "", tags={ "productos", })
+    @ApiOperation(value = "Add new product", nickname = "postProductos", notes = "", tags={ "productos", })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Null response"),
-        @ApiResponse(code = 200, message = "unexpected error", response = Error.class) })
+        @ApiResponse(code = 400, message = "unexpected error", response = Error.class) })
     @PostMapping(
         value = "/",
         produces = { "application/json" },

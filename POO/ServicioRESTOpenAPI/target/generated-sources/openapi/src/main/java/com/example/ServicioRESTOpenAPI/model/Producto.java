@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,21 +12,21 @@ import javax.validation.constraints.*;
 /**
  * Producto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-23T15:54:00.857221600+02:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-24T16:40:58.091955800+02:00[Europe/Madrid]")
 public class Producto   {
   @JsonProperty("id")
-  private Long id;
+  private Integer id;
 
   @JsonProperty("nombre")
   private String nombre;
 
   @JsonProperty("precio")
-  private BigDecimal precio;
+  private Double precio;
 
   @JsonProperty("categoria")
   private String categoria;
 
-  public Producto id(Long id) {
+  public Producto id(Integer id) {
     this.id = id;
     return this;
   }
@@ -40,11 +39,11 @@ public class Producto   {
   @NotNull
 
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -59,7 +58,7 @@ public class Producto   {
   */
   @ApiModelProperty(value = "")
 
-
+@Pattern(regexp="^C.*") 
   public String getNombre() {
     return nombre;
   }
@@ -68,7 +67,7 @@ public class Producto   {
     this.nombre = nombre;
   }
 
-  public Producto precio(BigDecimal precio) {
+  public Producto precio(Double precio) {
     this.precio = precio;
     return this;
   }
@@ -79,13 +78,12 @@ public class Producto   {
   */
   @ApiModelProperty(value = "")
 
-  @Valid
 
-  public BigDecimal getPrecio() {
+  public Double getPrecio() {
     return precio;
   }
 
-  public void setPrecio(BigDecimal precio) {
+  public void setPrecio(Double precio) {
     this.precio = precio;
   }
 

@@ -1,0 +1,4 @@
+com\example\ServicioRESTOpenAPI\model\Producto.class
+com\example\ServicioRESTOpenAPI\api\DefaultApi.class
+com\example\ServicioRESTOpenAPI\api\ApiUtil.class
+com\example\ServicioRESTOpenAPI\model\Error.class

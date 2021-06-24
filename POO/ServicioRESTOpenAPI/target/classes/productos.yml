@@ -9,25 +9,25 @@ servers:
 paths:
   /:
     get:
-      summary: Lista de todos los productos
+      summary: List all products
       operationId: getProductos
       tags:
         - productos
       responses:
         '200':
-          description: List of products
+          description: List all products
           content:
             application/json:    
               schema:
-                $ref: "#/components/schemas/Producto"
-        default:
+                $ref: "#/components/schemas/Productos"
+        '400':
           description: unexpected error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
     post:
-      summary: Añadir un producto
+      summary: Add new product
       operationId: postProductos
       requestBody:
         required: true
@@ -40,7 +40,7 @@ paths:
       responses:
         '201':
           description: Null response
-        default:
+        '400':
           description: unexpected error
           content:
             application/json:
@@ -55,13 +55,19 @@ components:
       properties:
         id:
           type: integer
-          format: int64
+          format: int32
         nombre:
           type: string
+          pattern: "^C.*"
         precio:
           type: number
+          format: double
         categoria:
-          type: string     
+          type: string 
+    Productos:
+      type: array
+      items:
+        $ref: "#/components/schemas/Producto"    
     Error:
       type: object
       required:
