@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-24T17:00:04.841880700+02:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-25T09:08:14.629891300+02:00[Europe/Madrid]")
 @Validated
 @Api(value = "default", description = "the default API")
 public interface DefaultApi {
