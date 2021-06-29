@@ -6,7 +6,6 @@ public class Volatile extends Thread{
 
     public void run() {
         while(!cambio) {
-            Thread.yield();
             System.out.println(Thread.currentThread().getName() + " -> Valor no disponible");
         }
         System.out.println(Thread.currentThread().getName() + " -> Leyendo valor -> " + valor);

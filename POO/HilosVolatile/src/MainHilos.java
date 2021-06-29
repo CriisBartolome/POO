@@ -14,8 +14,7 @@ public class MainHilos {
             hilo1.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        
+        }        
         
         hilo1.setValor(8);
         
