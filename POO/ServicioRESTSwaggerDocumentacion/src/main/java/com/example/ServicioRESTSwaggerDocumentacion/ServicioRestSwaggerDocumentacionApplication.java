@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //Para acceder a la documentación en formato JSON
 //http://localhost:8080/v2/api-docs
+//http://localhost:8080/v3/api-docs
 
 //Para hacer a la ui de swagger
 //http://localhost:8080/swagger-ui.html
