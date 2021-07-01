@@ -1,10 +1,10 @@
 
 public class MainHilos {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
 
-        // En este código se puede ver que el valor actual siempre se actualiza
-        // bien, no hay números repetidos
+        // En este cÃ³digo se puede ver que el valor actual siempre se actualiza
+        // bien, no hay nÃºmeros repetidos
 
         VolatileContador vContador = new VolatileContador();
         Thread hilo1 = new VolatileThread(vContador);
