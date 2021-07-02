@@ -41,12 +41,12 @@ public class MockitoSpyMockApplicationTests {
 
     @Test
     public void usoDeSpy() {
-        spyLista.add("one");
-        spyLista.add("two");
+        spyLista.add("Elemento 1");
+        spyLista.add("Elemento 2");
         System.out.println(spyLista.size());
 
-        Mockito.verify(spyLista).add("one");
-        Mockito.verify(spyLista).add("two");
+        Mockito.verify(spyLista).add("Elemento 1");
+        Mockito.verify(spyLista).add("Elemento 2");
 
         assertEquals(2, spyLista.size());
 
